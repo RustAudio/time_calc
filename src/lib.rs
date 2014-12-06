@@ -1,8 +1,8 @@
 //!
-//!  time_generic.rs
+//!  time_calc
+//!
 //!
 //!  Created by Mitchell Nordine at 03:54PM on November 02, 2014.
-//!
 //!
 
 extern crate serialize;

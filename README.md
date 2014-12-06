@@ -16,4 +16,14 @@ println!("Convert 4 bars to samples where the tempo is 120bpm, the time signatur
          Bars(4).samples(bpm, time_sig, SAMPLE_HZ))
 ```
 
+Usage
+-----
+
+Add time_calc to your cargo dependencies like this:
+
+```
+[dependencies.time_calc]
+git = "https://github.com/RustAudio/time_calc.git"
+```
+
 See [the example](https://github.com/RustAudio/time_calc/blob/master/examples/test.rs) for a better demo.

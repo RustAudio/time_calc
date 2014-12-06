@@ -5,8 +5,6 @@
 //!
 //!
 
-#![feature(macro_rules)]
-
 extern crate serialize;
 
 pub use bars::Bars;

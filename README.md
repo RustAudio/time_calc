@@ -1,7 +1,7 @@
 time_calc
 =========
 
-A library for music/audio time conversions!
+A library for music/DSP time conversions!
 
 `time_calc` provides functions and methods for converting between ticks, ms, samples, bars, beats and measures.
 

@@ -1,12 +1,12 @@
 
-pub type Top = u8;
-pub type Bottom = u8;
+pub type Top = u16;
+pub type Bottom = u16;
 
 /// Represents a musical time signature.
 #[deriving(Show, Clone, Encodable, Decodable, PartialEq, Eq)]
 pub struct TimeSig {
-    pub top: u16,
-    pub bottom: u16,
+    pub top: Top,
+    pub bottom: Bottom,
 }
 
 impl TimeSig {

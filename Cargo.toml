@@ -1,6 +1,9 @@
 [package]
 
 name = "time_calc"
-version = "0.1.0"
-authors = [ "mitchell.nordine@gmail.com" ]
-
+description = "A library for music/DSP time conversions! Provides functions and methods for converting between ticks, ms, samples, bars, beats and measures."
+version = "0.9.0"
+authors = ["mitchell.nordine@gmail.com"]
+readme = "README.md"
+keywords = ["time", "dsp", "audio", "music", "conversion"]
+license = "Apache-2.0/MIT"

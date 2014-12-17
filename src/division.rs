@@ -11,7 +11,7 @@ use super::TimeSig;
 pub type NumDiv = i64;
 
 /// An enum with variants used to represent a musical division.
-#[deriving(Show, Clone, FromPrimitive, Encodable, Decodable, PartialEq, Eq)]
+#[deriving(Show, Copy, Clone, FromPrimitive, Encodable, Decodable, PartialEq, Eq)]
 pub enum Division {
     Bar,
     Minim,
@@ -94,21 +94,21 @@ impl ToPrimitive for Division {
 }
 
 impl Add<int, int> for Division {
-    fn add(&self, rhs: &int) -> int {
-        self.to_int().unwrap() + *rhs
+    fn add(self, rhs: int) -> int {
+        self.to_int().unwrap() + rhs
     }
 }
 
 impl Sub<int, int> for Division {
-    fn sub(&self, rhs: &int) -> int {
-        self.to_int().unwrap() - *rhs
+    fn sub(self, rhs: int) -> int {
+        self.to_int().unwrap() - rhs
     }
 }
 
 /// The 'Division Type'. Used for handling 'Thirds'.
 /// Whole represents a Whole division, while TwoThirds
 /// represents two thirds of a division.
-#[deriving(Show, Clone, FromPrimitive, Encodable, Decodable, PartialEq, Eq)]
+#[deriving(Show, Copy, Clone, FromPrimitive, Encodable, Decodable, PartialEq, Eq)]
 pub enum DivType {
     Whole, TwoThirds
 }
@@ -141,14 +141,14 @@ impl ToPrimitive for DivType {
 }
 
 impl Add<int, int> for DivType {
-    fn add(&self, rhs: &int) -> int {
-        self.to_int().unwrap() + *rhs
+    fn add(self, rhs: int) -> int {
+        self.to_int().unwrap() + rhs
     }
 }
 
 impl Sub<int, int> for DivType {
-    fn sub(&self, rhs: &int) -> int {
-        self.to_int().unwrap() - *rhs
+    fn sub(self, rhs: int) -> int {
+        self.to_int().unwrap() - rhs
     }
 }
 

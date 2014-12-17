@@ -24,7 +24,7 @@ use super::{
 };
 
 /// Represents a number of bars aka a simplified version of `Measure(1, Bar, Whole)`.
-#[deriving(Show, Clone, Encodable, Decodable)]
+#[deriving(Show, Copy, Clone, Encodable, Decodable)]
 pub struct Bars(pub NumDiv);
 
 impl Bars {
@@ -78,35 +78,35 @@ impl Bars {
 
 impl Add<Bars, Bars> for Bars {
     #[inline]
-    fn add(&self, rhs: &Bars) -> Bars {
+    fn add(self, rhs: Bars) -> Bars {
         Bars(self.bars() + rhs.bars())
     }
 }
 
 impl Sub<Bars, Bars> for Bars {
     #[inline]
-    fn sub(&self, rhs: &Bars) -> Bars {
+    fn sub(self, rhs: Bars) -> Bars {
         Bars(self.bars() - rhs.bars())
     }
 }
 
 impl Mul<Bars, Bars> for Bars {
     #[inline]
-    fn mul(&self, rhs: &Bars) -> Bars {
+    fn mul(self, rhs: Bars) -> Bars {
         Bars(self.bars() * rhs.bars())
     }
 }
 
 impl Div<Bars, Bars> for Bars {
     #[inline]
-    fn div(&self, rhs: &Bars) -> Bars {
+    fn div(self, rhs: Bars) -> Bars {
         Bars(self.bars() / rhs.bars())
     }
 }
 
 impl Rem<Bars, Bars> for Bars {
     #[inline]
-    fn rem(&self, rhs: &Bars) -> Bars {
+    fn rem(self, rhs: Bars) -> Bars {
         Bars(self.bars() % rhs.bars())
     }
 }

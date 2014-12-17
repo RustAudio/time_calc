@@ -28,7 +28,7 @@ use super::{
 /// Measure(1, Bar, Whole) is one bar of musical time.
 /// Measure(3, Beat, Whole) is three beats of musical time.
 /// Measure(1, Minim, TwoThirds) is two thirds of a minim.
-#[deriving(Show, Clone, Encodable, Decodable, PartialEq, Eq)]
+#[deriving(Show, Copy, Clone, Encodable, Decodable, PartialEq, Eq)]
 pub struct Measure(pub NumDiv, pub Division, pub DivType);
 
 impl Measure {

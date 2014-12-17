@@ -19,7 +19,7 @@ use super::{
 };
 
 /// Time representation in the form of Ticks.
-#[deriving(Show, Clone, Encodable, Decodable)]
+#[deriving(Show, Copy, Clone, Encodable, Decodable)]
 pub struct Ticks(pub calc::Ticks);
 
 impl Ticks {
@@ -66,35 +66,35 @@ impl Ticks {
 
 impl Add<Ticks, Ticks> for Ticks {
     #[inline]
-    fn add(&self, rhs: &Ticks) -> Ticks {
+    fn add(self, rhs: Ticks) -> Ticks {
         Ticks(self.ticks() + rhs.ticks())
     }
 }
 
 impl Sub<Ticks, Ticks> for Ticks {
     #[inline]
-    fn sub(&self, rhs: &Ticks) -> Ticks {
+    fn sub(self, rhs: Ticks) -> Ticks {
         Ticks(self.ticks() - rhs.ticks())
     }
 }
 
 impl Mul<Ticks, Ticks> for Ticks {
     #[inline]
-    fn mul(&self, rhs: &Ticks) -> Ticks {
+    fn mul(self, rhs: Ticks) -> Ticks {
         Ticks(self.ticks() * rhs.ticks())
     }
 }
 
 impl Div<Ticks, Ticks> for Ticks {
     #[inline]
-    fn div(&self, rhs: &Ticks) -> Ticks {
+    fn div(self, rhs: Ticks) -> Ticks {
         Ticks(self.ticks() / rhs.ticks())
     }
 }
 
 impl Rem<Ticks, Ticks> for Ticks {
     #[inline]
-    fn rem(&self, rhs: &Ticks) -> Ticks {
+    fn rem(self, rhs: Ticks) -> Ticks {
         Ticks(self.ticks() % rhs.ticks())
     }
 }

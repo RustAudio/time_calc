@@ -20,7 +20,7 @@ use super::{
 };
 
 /// Time representation in the form of Milliseconds.
-#[deriving(Show, Clone, Encodable, Decodable)]
+#[deriving(Show, Copy, Clone, Encodable, Decodable)]
 pub struct Ms(pub calc::Ms);
 
 impl Ms {
@@ -67,35 +67,35 @@ impl Ms {
 
 impl Add<Ms, Ms> for Ms {
     #[inline]
-    fn add(&self, rhs: &Ms) -> Ms {
+    fn add(self, rhs: Ms) -> Ms {
         Ms(self.ms() + rhs.ms())
     }
 }
 
 impl Sub<Ms, Ms> for Ms {
     #[inline]
-    fn sub(&self, rhs: &Ms) -> Ms {
+    fn sub(self, rhs: Ms) -> Ms {
         Ms(self.ms() - rhs.ms())
     }
 }
 
 impl Mul<Ms, Ms> for Ms {
     #[inline]
-    fn mul(&self, rhs: &Ms) -> Ms {
+    fn mul(self, rhs: Ms) -> Ms {
         Ms(self.ms() * rhs.ms())
     }
 }
 
 impl Div<Ms, Ms> for Ms {
     #[inline]
-    fn div(&self, rhs: &Ms) -> Ms {
+    fn div(self, rhs: Ms) -> Ms {
         Ms(self.ms() / rhs.ms())
     }
 }
 
 impl Rem<Ms, Ms> for Ms {
     #[inline]
-    fn rem(&self, rhs: &Ms) -> Ms {
+    fn rem(self, rhs: Ms) -> Ms {
         Ms(self.ms() % rhs.ms())
     }
 }

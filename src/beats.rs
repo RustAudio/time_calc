@@ -23,7 +23,7 @@ use super::{
 };
 
 /// Represents a number of beats aka a simplified version of `Measure(1, Beat, Whole)`.
-#[deriving(Show, Clone, Encodable, Decodable)]
+#[deriving(Show, Copy, Clone, Encodable, Decodable)]
 pub struct Beats(pub NumDiv);
 
 impl Beats {
@@ -78,35 +78,35 @@ impl Beats {
 
 impl Add<Beats, Beats> for Beats {
     #[inline]
-    fn add(&self, rhs: &Beats) -> Beats {
+    fn add(self, rhs: Beats) -> Beats {
         Beats(self.beats() + rhs.beats())
     }
 }
 
 impl Sub<Beats, Beats> for Beats {
     #[inline]
-    fn sub(&self, rhs: &Beats) -> Beats {
+    fn sub(self, rhs: Beats) -> Beats {
         Beats(self.beats() - rhs.beats())
     }
 }
 
 impl Mul<Beats, Beats> for Beats {
     #[inline]
-    fn mul(&self, rhs: &Beats) -> Beats {
+    fn mul(self, rhs: Beats) -> Beats {
         Beats(self.beats() * rhs.beats())
     }
 }
 
 impl Div<Beats, Beats> for Beats {
     #[inline]
-    fn div(&self, rhs: &Beats) -> Beats {
+    fn div(self, rhs: Beats) -> Beats {
         Beats(self.beats() / rhs.beats())
     }
 }
 
 impl Rem<Beats, Beats> for Beats {
     #[inline]
-    fn rem(&self, rhs: &Beats) -> Beats {
+    fn rem(self, rhs: Beats) -> Beats {
         Beats(self.beats() % rhs.beats())
     }
 }

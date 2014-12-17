@@ -20,7 +20,7 @@ use super::{
 };
 
 /// Time representation in the form of Samples.
-#[deriving(Show, Clone, Encodable, Decodable)]
+#[deriving(Show, Copy, Clone, Encodable, Decodable)]
 pub struct Samples(pub calc::Samples);
 
 impl Samples {
@@ -67,35 +67,35 @@ impl Samples {
 
 impl Add<Samples, Samples> for Samples {
     #[inline]
-    fn add(&self, rhs: &Samples) -> Samples {
+    fn add(self, rhs: Samples) -> Samples {
         Samples(self.samples() + rhs.samples())
     }
 }
 
 impl Sub<Samples, Samples> for Samples {
     #[inline]
-    fn sub(&self, rhs: &Samples) -> Samples {
+    fn sub(self, rhs: Samples) -> Samples {
         Samples(self.samples() - rhs.samples())
     }
 }
 
 impl Mul<Samples, Samples> for Samples {
     #[inline]
-    fn mul(&self, rhs: &Samples) -> Samples {
+    fn mul(self, rhs: Samples) -> Samples {
         Samples(self.samples() * rhs.samples())
     }
 }
 
 impl Div<Samples, Samples> for Samples {
     #[inline]
-    fn div(&self, rhs: &Samples) -> Samples {
+    fn div(self, rhs: Samples) -> Samples {
         Samples(self.samples() / rhs.samples())
     }
 }
 
 impl Rem<Samples, Samples> for Samples {
     #[inline]
-    fn rem(&self, rhs: &Samples) -> Samples {
+    fn rem(self, rhs: Samples) -> Samples {
         Samples(self.samples() % rhs.samples())
     }
 }

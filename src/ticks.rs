@@ -101,7 +101,7 @@ impl Rem<Ticks, Ticks> for Ticks {
 
 impl Neg<Ticks> for Ticks {
     #[inline]
-    fn neg(&self) -> Ticks {
+    fn neg(self) -> Ticks {
         Ticks(-self.ticks())
     }
 }

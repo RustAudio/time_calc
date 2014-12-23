@@ -113,7 +113,7 @@ impl Rem<Bars, Bars> for Bars {
 
 impl Neg<Bars> for Bars {
     #[inline]
-    fn neg(&self) -> Bars {
+    fn neg(self) -> Bars {
         Bars(-self.bars())
     }
 }

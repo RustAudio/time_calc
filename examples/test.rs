@@ -59,7 +59,7 @@ fn main() {
              Bars(1).samples(bpm, time_sig, SAMPLE_HZ));
 
     // We can also convert back the other way! Here's an example from Ms -> Beats.
-    println!("1 minute as a duration in beats: {}", Ms(60_000.0).beats(bpm))
+    println!("1 minute as a duration in beats: {}", Ms(60_000.0).beats(bpm));
 
     // Here's an example from Samples -> Bars.
     println!("176_400 samples as a duration in bars: {}",

@@ -113,7 +113,7 @@ impl Rem<Beats, Beats> for Beats {
 
 impl Neg<Beats> for Beats {
     #[inline]
-    fn neg(&self) -> Beats {
+    fn neg(self) -> Beats {
         Beats(-self.beats())
     }
 }

@@ -102,7 +102,7 @@ impl Rem<Samples, Samples> for Samples {
 
 impl Neg<Samples> for Samples {
     #[inline]
-    fn neg(&self) -> Samples {
+    fn neg(self) -> Samples {
         Samples(-self.samples())
     }
 }

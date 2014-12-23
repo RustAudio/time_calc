@@ -102,7 +102,7 @@ impl Rem<Ms, Ms> for Ms {
 
 impl Neg<Ms> for Ms {
     #[inline]
-    fn neg(&self) -> Ms {
+    fn neg(self) -> Ms {
         Ms(-self.ms())
     }
 }

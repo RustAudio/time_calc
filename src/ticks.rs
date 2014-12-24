@@ -19,7 +19,7 @@ use super::{
 };
 
 /// Time representation in the form of Ticks.
-#[deriving(Show, Copy, Clone, Encodable, Decodable)]
+#[deriving(Show, Copy, Clone, RustcEncodable, RustcDecodable)]
 pub struct Ticks(pub calc::Ticks);
 
 impl Ticks {

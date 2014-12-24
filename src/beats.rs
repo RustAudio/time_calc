@@ -23,7 +23,7 @@ use super::{
 };
 
 /// Represents a number of beats aka a simplified version of `Measure(1, Beat, Whole)`.
-#[deriving(Show, Copy, Clone, Encodable, Decodable)]
+#[deriving(Show, Copy, Clone, RustcEncodable, RustcDecodable)]
 pub struct Beats(pub NumDiv);
 
 impl Beats {

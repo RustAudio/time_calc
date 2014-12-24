@@ -20,7 +20,7 @@ use super::{
 };
 
 /// Time representation in the form of Samples.
-#[deriving(Show, Copy, Clone, Encodable, Decodable)]
+#[deriving(Show, Copy, Clone, RustcEncodable, RustcDecodable)]
 pub struct Samples(pub calc::Samples);
 
 impl Samples {

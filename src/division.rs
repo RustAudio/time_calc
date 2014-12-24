@@ -11,7 +11,7 @@ use super::TimeSig;
 pub type NumDiv = i64;
 
 /// An enum with variants used to represent a musical division.
-#[deriving(Show, Copy, Clone, FromPrimitive, Encodable, Decodable, PartialEq, Eq)]
+#[deriving(Show, Copy, Clone, FromPrimitive, RustcEncodable, RustcDecodable, PartialEq, Eq)]
 pub enum Division {
     Bar,
     Minim,
@@ -108,7 +108,7 @@ impl Sub<int, int> for Division {
 /// The 'Division Type'. Used for handling 'Thirds'.
 /// Whole represents a Whole division, while TwoThirds
 /// represents two thirds of a division.
-#[deriving(Show, Copy, Clone, FromPrimitive, Encodable, Decodable, PartialEq, Eq)]
+#[deriving(Show, Copy, Clone, FromPrimitive, RustcEncodable, RustcDecodable, PartialEq, Eq)]
 pub enum DivType {
     Whole, TwoThirds
 }

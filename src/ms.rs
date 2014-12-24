@@ -20,7 +20,7 @@ use super::{
 };
 
 /// Time representation in the form of Milliseconds.
-#[deriving(Show, Copy, Clone, Encodable, Decodable)]
+#[deriving(Show, Copy, Clone, RustcEncodable, RustcDecodable)]
 pub struct Ms(pub calc::Ms);
 
 impl Ms {

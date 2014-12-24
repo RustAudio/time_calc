@@ -24,7 +24,7 @@ use super::{
 };
 
 /// Represents a number of bars aka a simplified version of `Measure(1, Bar, Whole)`.
-#[deriving(Show, Copy, Clone, Encodable, Decodable)]
+#[deriving(Show, Copy, Clone, RustcEncodable, RustcDecodable)]
 pub struct Bars(pub NumDiv);
 
 impl Bars {

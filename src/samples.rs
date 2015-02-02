@@ -5,6 +5,9 @@
 //!
 //!
 
+use std::cmp::Ordering;
+use std::ops::{Add, Sub, Mul, Div, Rem, Neg};
+use std::num::{FromPrimitive, ToPrimitive};
 use super::calc;
 use super::{
     Bars,
@@ -20,7 +23,7 @@ use super::{
 };
 
 /// Time representation in the form of Samples.
-#[deriving(Show, Copy, Clone, RustcEncodable, RustcDecodable)]
+#[derive(Debug, Copy, Clone, RustcEncodable, RustcDecodable)]
 pub struct Samples(pub calc::Samples);
 
 impl Samples {
@@ -65,42 +68,48 @@ impl Samples {
 
 }
 
-impl Add<Samples, Samples> for Samples {
+impl Add for Samples {
+    type Output = Samples;
     #[inline]
     fn add(self, rhs: Samples) -> Samples {
         Samples(self.samples() + rhs.samples())
     }
 }
 
-impl Sub<Samples, Samples> for Samples {
+impl Sub for Samples {
+    type Output = Samples;
     #[inline]
     fn sub(self, rhs: Samples) -> Samples {
         Samples(self.samples() - rhs.samples())
     }
 }
 
-impl Mul<Samples, Samples> for Samples {
+impl Mul for Samples {
+    type Output = Samples;
     #[inline]
     fn mul(self, rhs: Samples) -> Samples {
         Samples(self.samples() * rhs.samples())
     }
 }
 
-impl Div<Samples, Samples> for Samples {
+impl Div for Samples {
+    type Output = Samples;
     #[inline]
     fn div(self, rhs: Samples) -> Samples {
         Samples(self.samples() / rhs.samples())
     }
 }
 
-impl Rem<Samples, Samples> for Samples {
+impl Rem for Samples {
+    type Output = Samples;
     #[inline]
     fn rem(self, rhs: Samples) -> Samples {
         Samples(self.samples() % rhs.samples())
     }
 }
 
-impl Neg<Samples> for Samples {
+impl Neg for Samples {
+    type Output = Samples;
     #[inline]
     fn neg(self) -> Samples {
         Samples(-self.samples())

@@ -2,8 +2,12 @@
 
 name = "time_calc"
 description = "A library for music/DSP time conversions! Provides functions and methods for converting between ticks, ms, samples, bars, beats and measures."
-version = "0.9.3"
+version = "0.9.5"
 authors = ["mitchell.nordine@gmail.com"]
 readme = "README.md"
 keywords = ["time", "dsp", "audio", "music", "conversion"]
 license = "Apache-2.0/MIT"
+repository = "https://github.com/RustAudio/time_calc"
+
+[dependencies]
+rustc-serialize = "0.2.10"

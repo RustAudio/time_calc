@@ -5,13 +5,14 @@
 //!
 //!
 
-use std::num::NumCast;
+use std::ops::{Add, Sub};
+use std::num::{NumCast, ToPrimitive};
 use super::TimeSig;
 
 pub type NumDiv = i64;
 
 /// An enum with variants used to represent a musical division.
-#[deriving(Show, Copy, Clone, FromPrimitive, Encodable, Decodable, PartialEq, Eq)]
+#[derive(Debug, Copy, Clone, FromPrimitive, RustcEncodable, RustcDecodable, PartialEq, Eq)]
 pub enum Division {
     Bar,
     Minim,
@@ -93,14 +94,16 @@ impl ToPrimitive for Division {
     }
 }
 
-impl Add<int, int> for Division {
-    fn add(self, rhs: int) -> int {
+impl Add<isize> for Division {
+    type Output = isize;
+    fn add(self, rhs: isize) -> isize {
         self.to_int().unwrap() + rhs
     }
 }
 
-impl Sub<int, int> for Division {
-    fn sub(self, rhs: int) -> int {
+impl Sub<isize> for Division {
+    type Output = isize;
+    fn sub(self, rhs: isize) -> isize {
         self.to_int().unwrap() - rhs
     }
 }
@@ -108,7 +111,7 @@ impl Sub<int, int> for Division {
 /// The 'Division Type'. Used for handling 'Thirds'.
 /// Whole represents a Whole division, while TwoThirds
 /// represents two thirds of a division.
-#[deriving(Show, Copy, Clone, FromPrimitive, Encodable, Decodable, PartialEq, Eq)]
+#[derive(Debug, Copy, Clone, FromPrimitive, RustcEncodable, RustcDecodable, PartialEq, Eq)]
 pub enum DivType {
     Whole, TwoThirds
 }
@@ -140,14 +143,16 @@ impl ToPrimitive for DivType {
     }
 }
 
-impl Add<int, int> for DivType {
-    fn add(self, rhs: int) -> int {
+impl Add<isize> for DivType {
+    type Output = isize;
+    fn add(self, rhs: isize) -> isize {
         self.to_int().unwrap() + rhs
     }
 }
 
-impl Sub<int, int> for DivType {
-    fn sub(self, rhs: int) -> int {
+impl Sub<isize> for DivType {
+    type Output = isize;
+    fn sub(self, rhs: isize) -> isize {
         self.to_int().unwrap() - rhs
     }
 }

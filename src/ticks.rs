@@ -5,6 +5,9 @@
 //!
 //!
 
+use std::cmp::Ordering;
+use std::ops::{Add, Sub, Mul, Div, Rem, Neg};
+use std::num::{FromPrimitive, ToPrimitive};
 use super::calc;
 use super::{
     Bars,
@@ -19,7 +22,7 @@ use super::{
 };
 
 /// Time representation in the form of Ticks.
-#[deriving(Show, Copy, Clone, Encodable, Decodable)]
+#[derive(Debug, Copy, Clone, RustcEncodable, RustcDecodable)]
 pub struct Ticks(pub calc::Ticks);
 
 impl Ticks {
@@ -64,42 +67,48 @@ impl Ticks {
 
 }
 
-impl Add<Ticks, Ticks> for Ticks {
+impl Add for Ticks {
+    type Output = Ticks;
     #[inline]
     fn add(self, rhs: Ticks) -> Ticks {
         Ticks(self.ticks() + rhs.ticks())
     }
 }
 
-impl Sub<Ticks, Ticks> for Ticks {
+impl Sub for Ticks {
+    type Output = Ticks;
     #[inline]
     fn sub(self, rhs: Ticks) -> Ticks {
         Ticks(self.ticks() - rhs.ticks())
     }
 }
 
-impl Mul<Ticks, Ticks> for Ticks {
+impl Mul for Ticks {
+    type Output = Ticks;
     #[inline]
     fn mul(self, rhs: Ticks) -> Ticks {
         Ticks(self.ticks() * rhs.ticks())
     }
 }
 
-impl Div<Ticks, Ticks> for Ticks {
+impl Div for Ticks {
+    type Output = Ticks;
     #[inline]
     fn div(self, rhs: Ticks) -> Ticks {
         Ticks(self.ticks() / rhs.ticks())
     }
 }
 
-impl Rem<Ticks, Ticks> for Ticks {
+impl Rem for Ticks {
+    type Output = Ticks;
     #[inline]
     fn rem(self, rhs: Ticks) -> Ticks {
         Ticks(self.ticks() % rhs.ticks())
     }
 }
 
-impl Neg<Ticks> for Ticks {
+impl Neg for Ticks {
+    type Output = Ticks;
     #[inline]
     fn neg(self) -> Ticks {
         Ticks(-self.ticks())

@@ -5,6 +5,9 @@
 //!
 //!
 
+use std::cmp::Ordering;
+use std::num::{FromPrimitive, ToPrimitive};
+use std::ops::{Add, Sub, Mul, Div, Rem, Neg};
 use super::calc;
 use super::{
     Bpm,
@@ -24,7 +27,7 @@ use super::{
 };
 
 /// Represents a number of bars aka a simplified version of `Measure(1, Bar, Whole)`.
-#[deriving(Show, Copy, Clone, Encodable, Decodable)]
+#[derive(Debug, Copy, Clone, RustcEncodable, RustcDecodable)]
 pub struct Bars(pub NumDiv);
 
 impl Bars {
@@ -76,42 +79,48 @@ impl Bars {
 
 }
 
-impl Add<Bars, Bars> for Bars {
+impl Add for Bars {
+    type Output = Bars;
     #[inline]
     fn add(self, rhs: Bars) -> Bars {
         Bars(self.bars() + rhs.bars())
     }
 }
 
-impl Sub<Bars, Bars> for Bars {
+impl Sub for Bars {
+    type Output = Bars;
     #[inline]
     fn sub(self, rhs: Bars) -> Bars {
         Bars(self.bars() - rhs.bars())
     }
 }
 
-impl Mul<Bars, Bars> for Bars {
+impl Mul for Bars {
+    type Output = Bars;
     #[inline]
     fn mul(self, rhs: Bars) -> Bars {
         Bars(self.bars() * rhs.bars())
     }
 }
 
-impl Div<Bars, Bars> for Bars {
+impl Div for Bars {
+    type Output = Bars;
     #[inline]
     fn div(self, rhs: Bars) -> Bars {
         Bars(self.bars() / rhs.bars())
     }
 }
 
-impl Rem<Bars, Bars> for Bars {
+impl Rem for Bars {
+    type Output = Bars;
     #[inline]
     fn rem(self, rhs: Bars) -> Bars {
         Bars(self.bars() % rhs.bars())
     }
 }
 
-impl Neg<Bars> for Bars {
+impl Neg for Bars {
+    type Output = Bars;
     #[inline]
     fn neg(self) -> Bars {
         Bars(-self.bars())

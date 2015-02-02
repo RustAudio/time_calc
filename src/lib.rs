@@ -5,7 +5,9 @@
 //!  Created by Mitchell Nordine at 03:54PM on November 02, 2014.
 //!
 
-extern crate serialize;
+#![feature(core)]
+
+extern crate "rustc-serialize" as rustc_serialize;
 
 pub use bars::Bars;
 pub use beats::Beats;

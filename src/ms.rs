@@ -5,6 +5,9 @@
 //!
 //!
 
+use std::cmp::Ordering;
+use std::ops::{Add, Sub, Mul, Div, Rem, Neg};
+use std::num::{FromPrimitive, ToPrimitive};
 use super::calc;
 use super::{
     Bars,
@@ -20,7 +23,7 @@ use super::{
 };
 
 /// Time representation in the form of Milliseconds.
-#[deriving(Show, Copy, Clone, Encodable, Decodable)]
+#[derive(Debug, Copy, Clone, RustcEncodable, RustcDecodable)]
 pub struct Ms(pub calc::Ms);
 
 impl Ms {
@@ -65,42 +68,48 @@ impl Ms {
 
 }
 
-impl Add<Ms, Ms> for Ms {
+impl Add for Ms {
+    type Output = Ms;
     #[inline]
     fn add(self, rhs: Ms) -> Ms {
         Ms(self.ms() + rhs.ms())
     }
 }
 
-impl Sub<Ms, Ms> for Ms {
+impl Sub for Ms {
+    type Output = Ms;
     #[inline]
     fn sub(self, rhs: Ms) -> Ms {
         Ms(self.ms() - rhs.ms())
     }
 }
 
-impl Mul<Ms, Ms> for Ms {
+impl Mul for Ms {
+    type Output = Ms;
     #[inline]
     fn mul(self, rhs: Ms) -> Ms {
         Ms(self.ms() * rhs.ms())
     }
 }
 
-impl Div<Ms, Ms> for Ms {
+impl Div for Ms {
+    type Output = Ms;
     #[inline]
     fn div(self, rhs: Ms) -> Ms {
         Ms(self.ms() / rhs.ms())
     }
 }
 
-impl Rem<Ms, Ms> for Ms {
+impl Rem for Ms {
+    type Output = Ms;
     #[inline]
     fn rem(self, rhs: Ms) -> Ms {
         Ms(self.ms() % rhs.ms())
     }
 }
 
-impl Neg<Ms> for Ms {
+impl Neg for Ms {
+    type Output = Ms;
     #[inline]
     fn neg(self) -> Ms {
         Ms(-self.ms())

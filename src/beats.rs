@@ -5,6 +5,9 @@
 //!
 //!
 
+use std::cmp::Ordering;
+use std::num::{FromPrimitive, ToPrimitive};
+use std::ops::{Add, Sub, Mul, Div, Rem, Neg};
 use super::calc;
 use super::{
     Bpm,
@@ -23,7 +26,7 @@ use super::{
 };
 
 /// Represents a number of beats aka a simplified version of `Measure(1, Beat, Whole)`.
-#[deriving(Show, Copy, Clone, Encodable, Decodable)]
+#[derive(Debug, Copy, Clone, RustcEncodable, RustcDecodable)]
 pub struct Beats(pub NumDiv);
 
 impl Beats {
@@ -76,42 +79,48 @@ impl Beats {
 
 }
 
-impl Add<Beats, Beats> for Beats {
+impl Add for Beats {
+    type Output = Beats;
     #[inline]
     fn add(self, rhs: Beats) -> Beats {
         Beats(self.beats() + rhs.beats())
     }
 }
 
-impl Sub<Beats, Beats> for Beats {
+impl Sub for Beats {
+    type Output = Beats;
     #[inline]
     fn sub(self, rhs: Beats) -> Beats {
         Beats(self.beats() - rhs.beats())
     }
 }
 
-impl Mul<Beats, Beats> for Beats {
+impl Mul for Beats {
+    type Output = Beats;
     #[inline]
     fn mul(self, rhs: Beats) -> Beats {
         Beats(self.beats() * rhs.beats())
     }
 }
 
-impl Div<Beats, Beats> for Beats {
+impl Div for Beats {
+    type Output = Beats;
     #[inline]
     fn div(self, rhs: Beats) -> Beats {
         Beats(self.beats() / rhs.beats())
     }
 }
 
-impl Rem<Beats, Beats> for Beats {
+impl Rem for Beats {
+    type Output = Beats;
     #[inline]
     fn rem(self, rhs: Beats) -> Beats {
         Beats(self.beats() % rhs.beats())
     }
 }
 
-impl Neg<Beats> for Beats {
+impl Neg for Beats {
+    type Output = Beats;
     #[inline]
     fn neg(self) -> Beats {
         Beats(-self.beats())

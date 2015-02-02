@@ -1,5 +1,5 @@
-time_calc
-=========
+# time_calc [![Build Status](https://travis-ci.org/RustAudio/time_calc.svg?branch=master)](https://travis-ci.org/RustAudio/time_calc)
+
 
 A library for music/DSP time conversions!
 

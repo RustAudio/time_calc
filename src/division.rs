@@ -6,7 +6,7 @@
 //!
 
 use std::ops::{Add, Sub};
-use std::num::{NumCast, ToPrimitive};
+use std::num::{NumCast, FromPrimitive, ToPrimitive};
 use super::TimeSig;
 
 pub type NumDiv = i64;
@@ -30,8 +30,8 @@ pub enum Division {
 
 impl Division {
 
-    pub fn from_int<T: ToPrimitive>(num: T) -> Division {
-        ::std::num::from_int::<Division>(num.to_int().unwrap()).unwrap()
+    pub fn from_isize<T: ToPrimitive>(num: T) -> Division {
+        FromPrimitive::from_isize(num.to_isize().unwrap()).unwrap()
     }
 
     /// Convert to the equivalent duration as a number of Beats.
@@ -55,7 +55,7 @@ impl Division {
 
 impl NumCast for Division {
     fn from<T: ToPrimitive>(n: T) -> Option<Division> {
-        Some(Division::from_int(n.to_int().unwrap()))
+        Some(Division::from_isize(n.to_isize().unwrap()))
     }
 }
 
@@ -97,14 +97,14 @@ impl ToPrimitive for Division {
 impl Add<isize> for Division {
     type Output = isize;
     fn add(self, rhs: isize) -> isize {
-        self.to_int().unwrap() + rhs
+        self.to_isize().unwrap() + rhs
     }
 }
 
 impl Sub<isize> for Division {
     type Output = isize;
     fn sub(self, rhs: isize) -> isize {
-        self.to_int().unwrap() - rhs
+        self.to_isize().unwrap() - rhs
     }
 }
 
@@ -117,14 +117,14 @@ pub enum DivType {
 }
 
 impl DivType {
-    pub fn from_int<T: NumCast>(num: T) -> DivType {
-        ::std::num::from_int::<DivType>(num.to_int().unwrap()).unwrap()
+    pub fn from_isize<T: NumCast>(num: T) -> DivType {
+        FromPrimitive::from_isize(num.to_isize().unwrap()).unwrap()
     }
 }
 
 impl NumCast for DivType {
     fn from<T: ToPrimitive>(n: T) -> Option<DivType> {
-        Some(DivType::from_int(n.to_int().unwrap()))
+        Some(DivType::from_isize(n.to_isize().unwrap()))
     }
 }
 
@@ -146,14 +146,14 @@ impl ToPrimitive for DivType {
 impl Add<isize> for DivType {
     type Output = isize;
     fn add(self, rhs: isize) -> isize {
-        self.to_int().unwrap() + rhs
+        self.to_isize().unwrap() + rhs
     }
 }
 
 impl Sub<isize> for DivType {
     type Output = isize;
     fn sub(self, rhs: isize) -> isize {
-        self.to_int().unwrap() - rhs
+        self.to_isize().unwrap() - rhs
     }
 }
 

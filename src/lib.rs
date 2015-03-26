@@ -7,7 +7,7 @@
 
 #![feature(core)]
 
-extern crate "rustc-serialize" as rustc_serialize;
+extern crate rustc_serialize;
 
 pub use bars::Bars;
 pub use beats::Beats;

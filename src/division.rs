@@ -5,14 +5,15 @@
 //!
 //!
 
+use num::{NumCast, FromPrimitive, ToPrimitive};
 use std::ops::{Add, Sub};
-use std::num::{NumCast, FromPrimitive, ToPrimitive};
 use super::TimeSig;
 
 pub type NumDiv = i64;
 
 /// An enum with variants used to represent a musical division.
-#[derive(Debug, Copy, Clone, FromPrimitive, RustcEncodable, RustcDecodable, PartialEq, Eq)]
+enum_from_primitive!{
+#[derive(Debug, Copy, Clone, RustcEncodable, RustcDecodable, PartialEq, Eq)]
 pub enum Division {
     Bar,
     Minim,
@@ -27,6 +28,7 @@ pub enum Division {
     OneThousandTwentyFourth,
     TotalDivisions
 }
+}
 
 impl Division {
 
@@ -36,7 +38,7 @@ impl Division {
 
     /// Convert to the equivalent duration as a number of Beats.
     pub fn beats(&self, ts: TimeSig) -> f64 {
-        use std::num::Float;
+        use num::Float;
         match *self {
             Division::Bar => ts.beats_in_a_bar(),
             _ => 2.0.powi(Division::Beat as i32 - *self as i32),
@@ -111,9 +113,11 @@ impl Sub<isize> for Division {
 /// The 'Division Type'. Used for handling 'Thirds'.
 /// Whole represents a Whole division, while TwoThirds
 /// represents two thirds of a division.
-#[derive(Debug, Copy, Clone, FromPrimitive, RustcEncodable, RustcDecodable, PartialEq, Eq)]
+enum_from_primitive! {
+#[derive(Debug, Copy, Clone, RustcEncodable, RustcDecodable, PartialEq, Eq)]
 pub enum DivType {
     Whole, TwoThirds
+}
 }
 
 impl DivType {

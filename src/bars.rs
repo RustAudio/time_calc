@@ -5,8 +5,8 @@
 //!
 //!
 
+use num::{FromPrimitive, ToPrimitive};
 use std::cmp::Ordering;
-use std::num::{FromPrimitive, ToPrimitive};
 use std::ops::{Add, Sub, Mul, Div, Rem, Neg};
 use super::calc;
 use super::{

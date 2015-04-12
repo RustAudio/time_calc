@@ -5,9 +5,9 @@
 //!
 //!
 
+use num::{FromPrimitive, ToPrimitive};
 use std::cmp::Ordering;
 use std::ops::{Add, Sub, Mul, Div, Rem, Neg};
-use std::num::{FromPrimitive, ToPrimitive};
 use super::calc;
 use super::{
     Bars,

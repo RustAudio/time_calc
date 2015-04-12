@@ -5,7 +5,7 @@
 //!
 //!
 
-use std::num::Float;
+use num::Float;
 use super::{
     Measure,
     TimeSig,

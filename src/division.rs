@@ -12,7 +12,6 @@ use super::TimeSig;
 pub type NumDiv = i64;
 
 /// An enum with variants used to represent a musical division.
-enum_from_primitive!{
 #[derive(Debug, Copy, Clone, RustcEncodable, RustcDecodable, PartialEq, Eq)]
 pub enum Division {
     Bar,
@@ -26,8 +25,6 @@ pub enum Division {
     TwoHundredFiftySixth,
     FiveHundredTwelfth,
     OneThousandTwentyFourth,
-    TotalDivisions
-}
 }
 
 impl Division {
@@ -61,37 +58,41 @@ impl NumCast for Division {
     }
 }
 
-impl ToPrimitive for Division {
-    fn to_i64(&self) -> Option<i64> {
-        Some(match self {
-            &Division::Bar => 0,
-            &Division::Minim => 1,
-            &Division::Beat => 2,
-            &Division::Quaver => 3,
-            &Division::SemiQuaver => 4,
-            &Division::ThirtySecond => 5,
-            &Division::SixtyFourth => 6,
-            &Division::OneHundredTwentyEighth => 7,
-            &Division::TwoHundredFiftySixth => 8,
-            &Division::FiveHundredTwelfth => 9,
-            &Division::OneThousandTwentyFourth => 10,
-            &Division::TotalDivisions => 11,
-        })
+impl FromPrimitive for Division {
+    fn from_i64(n: i64) -> Option<Self> { Self::from_u64(n as u64) }
+    fn from_u64(n: u64) -> Option<Self> {
+        match n {
+            0  => Some(Division::Bar),
+            1  => Some(Division::Minim),
+            2  => Some(Division::Beat),
+            3  => Some(Division::Quaver),
+            4  => Some(Division::SemiQuaver),
+            5  => Some(Division::ThirtySecond),
+            6  => Some(Division::SixtyFourth),
+            7  => Some(Division::OneHundredTwentyEighth),
+            8  => Some(Division::TwoHundredFiftySixth),
+            9  => Some(Division::FiveHundredTwelfth),
+            10 => Some(Division::OneThousandTwentyFourth),
+            _  => None,
+        }
     }
+}
+
+impl ToPrimitive for Division {
+    fn to_i64(&self) -> Option<i64> { self.to_u64().map(|n| n as i64) }
     fn to_u64(&self) -> Option<u64> {
-        Some(match self {
-            &Division::Bar => 0,
-            &Division::Minim => 1,
-            &Division::Beat => 2,
-            &Division::Quaver => 3,
-            &Division::SemiQuaver => 4,
-            &Division::ThirtySecond => 5,
-            &Division::SixtyFourth => 6,
-            &Division::OneHundredTwentyEighth => 7,
-            &Division::TwoHundredFiftySixth => 8,
-            &Division::FiveHundredTwelfth => 9,
-            &Division::OneThousandTwentyFourth => 10,
-            &Division::TotalDivisions => 11,
+        Some(match *self {
+            Division::Bar => 0,
+            Division::Minim => 1,
+            Division::Beat => 2,
+            Division::Quaver => 3,
+            Division::SemiQuaver => 4,
+            Division::ThirtySecond => 5,
+            Division::SixtyFourth => 6,
+            Division::OneHundredTwentyEighth => 7,
+            Division::TwoHundredFiftySixth => 8,
+            Division::FiveHundredTwelfth => 9,
+            Division::OneThousandTwentyFourth => 10,
         })
     }
 }
@@ -113,12 +114,11 @@ impl Sub<isize> for Division {
 /// The 'Division Type'. Used for handling 'Thirds'.
 /// Whole represents a Whole division, while TwoThirds
 /// represents two thirds of a division.
-enum_from_primitive! {
 #[derive(Debug, Copy, Clone, RustcEncodable, RustcDecodable, PartialEq, Eq)]
 pub enum DivType {
     Whole, TwoThirds
 }
-}
+
 
 impl DivType {
     pub fn from_isize<T: NumCast>(num: T) -> DivType {
@@ -132,17 +132,23 @@ impl NumCast for DivType {
     }
 }
 
-impl ToPrimitive for DivType {
-    fn to_i64(&self) -> Option<i64> {
-        Some(match self {
-            &DivType::Whole => 0i64,
-            &DivType::TwoThirds => 1i64,
-        })
+impl FromPrimitive for DivType {
+    fn from_i64(n: i64) -> Option<Self> { Self::from_u64(n as u64) }
+    fn from_u64(n: u64) -> Option<Self> {
+        match n {
+            0 => Some(DivType::Whole),
+            1 => Some(DivType::TwoThirds),
+            _ => None,
+        }
     }
+}
+
+impl ToPrimitive for DivType {
+    fn to_i64(&self) -> Option<i64> { self.to_u64().map(|n| n as i64) }
     fn to_u64(&self) -> Option<u64> {
         Some(match self {
-            &DivType::Whole => 0u64,
-            &DivType::TwoThirds => 1u64,
+            &DivType::Whole     => 0,
+            &DivType::TwoThirds => 1,
         })
     }
 }

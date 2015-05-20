@@ -5,7 +5,6 @@
 //!  Created by Mitchell Nordine at 03:54PM on November 02, 2014.
 //!
 
-#[macro_use] extern crate enum_primitive;
 extern crate num;
 extern crate rustc_serialize;
 

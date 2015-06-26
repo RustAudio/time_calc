@@ -2,11 +2,7 @@ language: rust
 
 rust:
     - nightly
-    - 1.0.0-beta
-
-os:
-    - osx
-    - linux
+    - stable
 
 script:
     - cargo build --verbose

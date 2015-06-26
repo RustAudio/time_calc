@@ -6,6 +6,7 @@
 //!
 
 extern crate num;
+extern crate rand;
 extern crate rustc_serialize;
 
 pub use bars::Bars;

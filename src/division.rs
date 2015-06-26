@@ -27,6 +27,10 @@ pub enum Division {
     OneThousandTwentyFourth,
 }
 
+const HIGHEST_ZOOM_STEP: u8 = 10;
+
+
+
 impl Division {
 
     pub fn from_isize<T: ToPrimitive>(num: T) -> Division {
@@ -48,6 +52,21 @@ impl Division {
             Division::Bar => 1.0,
             _ => self.beats(ts) / ts.beats_in_a_bar(),
         }
+    }
+
+    /// Zoom into a higher resolution division by the number of steps given.
+    pub fn zoom_in(&self, steps: u8) -> Division {
+        let zoom_step = self.to_u8().unwrap() + steps;
+        assert!(zoom_step <= HIGHEST_ZOOM_STEP);
+        NumCast::from(zoom_step).unwrap()
+    }
+
+    /// Zoom into a higher resolution division by the number of steps given.
+    pub fn zoom_out(&self, steps: u8) -> Division {
+        let current_zoom_step = self.to_u8().unwrap();
+        assert!(steps <= current_zoom_step);
+        let zoom_step = current_zoom_step - steps;
+        NumCast::from(zoom_step).unwrap()
     }
 
 }
@@ -112,11 +131,11 @@ impl Sub<isize> for Division {
 }
 
 /// The 'Division Type'. Used for handling 'Thirds'.
-/// Whole represents a Whole division, while TwoThirds
-/// represents two thirds of a division.
+/// Whole represents a Whole division, while TwoThirds represents two thirds of a division.
 #[derive(Debug, Copy, Clone, RustcEncodable, RustcDecodable, PartialEq, Eq)]
 pub enum DivType {
-    Whole, TwoThirds
+    Whole,
+    TwoThirds,
 }
 
 
@@ -129,6 +148,13 @@ impl DivType {
 impl NumCast for DivType {
     fn from<T: ToPrimitive>(n: T) -> Option<DivType> {
         Some(DivType::from_isize(n.to_isize().unwrap()))
+    }
+}
+
+impl ::rand::Rand for DivType {
+    fn rand<R: ::rand::Rng>(rng: &mut R) -> DivType {
+        let rand: bool = rng.gen();
+        if rand { DivType::Whole } else { DivType::TwoThirds }
     }
 }
 

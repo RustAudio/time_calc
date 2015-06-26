@@ -12,4 +12,5 @@ homepage = "https://github.com/RustAudio/time_calc"
 
 [dependencies]
 num = "*"
+rand = "*"
 rustc-serialize = "*"

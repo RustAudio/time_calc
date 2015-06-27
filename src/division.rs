@@ -56,17 +56,27 @@ impl Division {
 
     /// Zoom into a higher resolution division by the number of steps given.
     pub fn zoom_in(&self, steps: u8) -> Division {
-        let zoom_step = self.to_u8().unwrap() + steps;
+        let zoom_step = self.to_u8() + steps;
         assert!(zoom_step <= HIGHEST_ZOOM_STEP);
         NumCast::from(zoom_step).unwrap()
     }
 
     /// Zoom into a higher resolution division by the number of steps given.
     pub fn zoom_out(&self, steps: u8) -> Division {
-        let current_zoom_step = self.to_u8().unwrap();
+        let current_zoom_step = self.to_u8();
         assert!(steps <= current_zoom_step);
         let zoom_step = current_zoom_step - steps;
         NumCast::from(zoom_step).unwrap()
+    }
+
+    /// Convert a Division to its byte equivalent.
+    pub fn to_u8(&self) -> u8 {
+        ToPrimitive::to_u8(self).unwrap()
+    }
+
+    /// Convert a Division to its signed byte equivalent.
+    pub fn to_i8(&self) -> i8 {
+        ToPrimitive::to_i8(self).unwrap()
     }
 
 }
@@ -140,9 +150,11 @@ pub enum DivType {
 
 
 impl DivType {
+
     pub fn from_isize<T: NumCast>(num: T) -> DivType {
         FromPrimitive::from_isize(num.to_isize().unwrap()).unwrap()
     }
+
 }
 
 impl NumCast for DivType {

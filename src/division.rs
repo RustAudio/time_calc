@@ -55,18 +55,24 @@ impl Division {
     }
 
     /// Zoom into a higher resolution division by the number of steps given.
-    pub fn zoom_in(&self, steps: u8) -> Division {
+    pub fn zoom_in(&self, steps: u8) -> Option<Division> {
         let zoom_step = self.to_u8() + steps;
-        assert!(zoom_step <= HIGHEST_ZOOM_STEP);
-        NumCast::from(zoom_step).unwrap()
+        if zoom_step <= HIGHEST_ZOOM_STEP {
+            Some(NumCast::from(zoom_step).unwrap())
+        } else {
+            None
+        }
     }
 
     /// Zoom into a higher resolution division by the number of steps given.
-    pub fn zoom_out(&self, steps: u8) -> Division {
+    pub fn zoom_out(&self, steps: u8) -> Option<Division> {
         let current_zoom_step = self.to_u8();
-        assert!(steps <= current_zoom_step);
-        let zoom_step = current_zoom_step - steps;
-        NumCast::from(zoom_step).unwrap()
+        if steps <= current_zoom_step {
+            let zoom_step = current_zoom_step - steps;
+            Some(NumCast::from(zoom_step).unwrap())
+        } else {
+            None
+        }
     }
 
     /// Convert a Division to its byte equivalent.

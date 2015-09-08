@@ -11,6 +11,6 @@ repository = "https://github.com/RustAudio/time_calc.git"
 homepage = "https://github.com/RustAudio/time_calc"
 
 [dependencies]
-num = "*"
-rand = "*"
-rustc-serialize = "*"
+num = "0.1.27"
+rand = "0.3.11"
+rustc-serialize = "0.3.16"

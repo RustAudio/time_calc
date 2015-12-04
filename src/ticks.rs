@@ -67,6 +67,12 @@ impl Ticks {
 
 }
 
+impl From<calc::Ticks> for Ticks {
+    fn from(ticks: calc::Ticks) -> Self {
+        Ticks(ticks)
+    }
+}
+
 impl Add for Ticks {
     type Output = Ticks;
     #[inline]

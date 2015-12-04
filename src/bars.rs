@@ -79,6 +79,12 @@ impl Bars {
 
 }
 
+impl From<NumDiv> for Bars {
+    fn from(n: NumDiv) -> Self {
+        Bars(n)
+    }
+}
+
 impl Add for Bars {
     type Output = Bars;
     #[inline]

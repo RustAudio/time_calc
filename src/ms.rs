@@ -68,6 +68,13 @@ impl Ms {
 
 }
 
+impl From<calc::Ms> for Ms {
+    #[inline]
+    fn from(ms: calc::Ms) -> Self {
+        Ms(ms)
+    }
+}
+
 impl Add for Ms {
     type Output = Ms;
     #[inline]

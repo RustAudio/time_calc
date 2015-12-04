@@ -68,6 +68,12 @@ impl Samples {
 
 }
 
+impl From<calc::Samples> for Samples {
+    fn from(samples: calc::Samples) -> Self {
+        Samples(samples)
+    }
+}
+
 impl Add for Samples {
     type Output = Samples;
     #[inline]

@@ -79,6 +79,12 @@ impl Beats {
 
 }
 
+impl From<NumDiv> for Beats {
+    fn from(n: NumDiv) -> Self {
+        Beats(n)
+    }
+}
+
 impl Add for Beats {
     type Output = Beats;
     #[inline]

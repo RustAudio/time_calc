@@ -7,6 +7,8 @@
 
 use super::calc;
 use super::{
+    Bars,
+    Beats,
     Bpm,
     Division,
     DivType,
@@ -105,3 +107,20 @@ impl Measure {
 
 }
 
+impl From<Bars> for Measure {
+    fn from(bars: Bars) -> Self {
+        Measure(bars.bars(), Division::Bar, DivType::Whole)
+    }
+}
+
+impl From<Beats> for Measure {
+    fn from(beats: Beats) -> Self {
+        Measure(beats.beats(), Division::Beat, DivType::Whole)
+    }
+}
+
+impl From<Division> for Measure {
+    fn from(div: Division) -> Self {
+        Measure(1, div, DivType::Whole)
+    }
+}

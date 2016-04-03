@@ -6,7 +6,6 @@
 //!
 
 use num::{FromPrimitive, ToPrimitive};
-use std::cmp::Ordering;
 use std::ops::{Add, Sub, Mul, Div, Rem, Neg};
 use super::calc;
 use super::{
@@ -27,7 +26,7 @@ use super::{
 };
 
 /// Represents a number of bars aka a simplified version of `Measure(1, Bar, Whole)`.
-#[derive(Debug, Copy, Clone, RustcEncodable, RustcDecodable)]
+#[derive(Debug, Copy, Clone, PartialEq, Eq, PartialOrd, Ord)]
 pub struct Bars(pub NumDiv);
 
 impl Bars {
@@ -133,29 +132,6 @@ impl Neg for Bars {
     }
 }
 
-impl PartialEq for Bars {
-    #[inline]
-    fn eq(&self, other: &Bars) -> bool {
-        self.bars() == other.bars()
-    }
-}
-
-impl Eq for Bars {}
-
-impl PartialOrd for Bars {
-    #[inline]
-    fn partial_cmp(&self, other: &Bars) -> Option<Ordering> {
-        self.bars().partial_cmp(&other.bars())
-    }
-}
-
-impl Ord for Bars {
-    #[inline]
-    fn cmp(&self, other: &Bars) -> Ordering {
-        self.bars().cmp(&other.bars())
-    }
-}
-
 impl ToPrimitive for Bars {
     fn to_u64(&self) -> Option<u64> {
         self.bars().to_u64()
@@ -173,4 +149,3 @@ impl FromPrimitive for Bars {
         Some(Bars(n as NumDiv))
     }
 }
-

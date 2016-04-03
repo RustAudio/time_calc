@@ -6,7 +6,6 @@
 //!
 
 use num::{FromPrimitive, ToPrimitive};
-use std::cmp::Ordering;
 use std::ops::{Add, Sub, Mul, Div, Rem, Neg};
 use super::calc;
 use super::{
@@ -26,7 +25,7 @@ use super::{
 };
 
 /// Represents a number of beats aka a simplified version of `Measure(1, Beat, Whole)`.
-#[derive(Debug, Copy, Clone, RustcEncodable, RustcDecodable)]
+#[derive(Debug, Copy, Clone, PartialEq, Eq, PartialOrd, Ord)]
 pub struct Beats(pub NumDiv);
 
 impl Beats {
@@ -130,29 +129,6 @@ impl Neg for Beats {
     #[inline]
     fn neg(self) -> Beats {
         Beats(-self.beats())
-    }
-}
-
-impl PartialEq for Beats {
-    #[inline]
-    fn eq(&self, other: &Beats) -> bool {
-        self.beats() == other.beats()
-    }
-}
-
-impl Eq for Beats {}
-
-impl PartialOrd for Beats {
-    #[inline]
-    fn partial_cmp(&self, other: &Beats) -> Option<Ordering> {
-        self.beats().partial_cmp(&other.beats())
-    }
-}
-
-impl Ord for Beats {
-    #[inline]
-    fn cmp(&self, other: &Beats) -> Ordering {
-        self.beats().cmp(&other.beats())
     }
 }
 

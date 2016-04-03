@@ -1,13 +1,5 @@
-//!
-//!  time_calc
-//!
-//!
-//!  Created by Mitchell Nordine at 03:54PM on November 02, 2014.
-//!
-
 extern crate num;
 extern crate rand;
-extern crate rustc_serialize;
 
 pub use bars::Bars;
 pub use beats::Beats;
@@ -51,3 +43,5 @@ pub mod samples;
 pub mod ticks;
 pub mod time_sig;
 
+#[cfg(feature="serde_serialization")]
+mod serde;

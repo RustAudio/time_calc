@@ -6,7 +6,6 @@
 //!
 
 use num::{FromPrimitive, ToPrimitive};
-use std::cmp::Ordering;
 use std::ops::{Add, Sub, Mul, Div, Rem, Neg};
 use super::calc;
 use super::{
@@ -23,7 +22,7 @@ use super::{
 };
 
 /// Time representation in the form of Milliseconds.
-#[derive(Debug, Copy, Clone, RustcEncodable, RustcDecodable)]
+#[derive(Debug, Copy, Clone, PartialEq, PartialOrd)]
 pub struct Ms(pub calc::Ms);
 
 impl Ms {
@@ -120,29 +119,6 @@ impl Neg for Ms {
     #[inline]
     fn neg(self) -> Ms {
         Ms(-self.ms())
-    }
-}
-
-impl PartialEq for Ms {
-    #[inline]
-    fn eq(&self, other: &Ms) -> bool {
-        self.ms() == other.ms()
-    }
-}
-
-impl Eq for Ms {}
-
-impl PartialOrd for Ms {
-    #[inline]
-    fn partial_cmp(&self, other: &Ms) -> Option<Ordering> {
-        self.ms().partial_cmp(&other.ms())
-    }
-}
-
-impl Ord for Ms {
-    #[inline]
-    fn cmp(&self, other: &Ms) -> Ordering {
-        self.partial_cmp(other).unwrap()
     }
 }
 

@@ -30,7 +30,7 @@ use super::{
 /// Measure(1, Bar, Whole) is one bar of musical time.
 /// Measure(3, Beat, Whole) is three beats of musical time.
 /// Measure(1, Minim, TwoThirds) is two thirds of a minim.
-#[derive(Debug, Copy, Clone, RustcEncodable, RustcDecodable, PartialEq, Eq)]
+#[derive(Debug, Copy, Clone, PartialEq, Eq)]
 pub struct Measure(pub NumDiv, pub Division, pub DivType);
 
 impl Measure {

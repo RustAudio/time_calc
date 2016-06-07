@@ -6,7 +6,6 @@
 //!
 
 use num::{FromPrimitive, ToPrimitive};
-use std::cmp::Ordering;
 use std::ops::{Add, Sub, Mul, Div, Rem, Neg};
 use super::calc;
 use super::{
@@ -22,7 +21,7 @@ use super::{
 };
 
 /// Time representation in the form of Ticks.
-#[derive(Debug, Copy, Clone, RustcEncodable, RustcDecodable)]
+#[derive(Debug, Copy, Clone, PartialEq, Eq, PartialOrd, Ord)]
 pub struct Ticks(pub calc::Ticks);
 
 impl Ticks {
@@ -118,29 +117,6 @@ impl Neg for Ticks {
     #[inline]
     fn neg(self) -> Ticks {
         Ticks(-self.ticks())
-    }
-}
-
-impl PartialEq for Ticks {
-    #[inline]
-    fn eq(&self, other: &Ticks) -> bool {
-        self.ticks() == other.ticks()
-    }
-}
-
-impl Eq for Ticks {}
-
-impl PartialOrd for Ticks {
-    #[inline]
-    fn partial_cmp(&self, other: &Ticks) -> Option<Ordering> {
-        self.ticks().partial_cmp(&other.ticks())
-    }
-}
-
-impl Ord for Ticks {
-    #[inline]
-    fn cmp(&self, other: &Ticks) -> Ordering {
-        self.ticks().cmp(&other.ticks())
     }
 }
 

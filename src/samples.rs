@@ -6,7 +6,6 @@
 //!
 
 use num::{FromPrimitive, ToPrimitive};
-use std::cmp::Ordering;
 use std::ops::{Add, Sub, Mul, Div, Rem, Neg};
 use super::calc;
 use super::{
@@ -23,7 +22,7 @@ use super::{
 };
 
 /// Time representation in the form of Samples.
-#[derive(Debug, Copy, Clone, RustcEncodable, RustcDecodable)]
+#[derive(Debug, Copy, Clone, PartialEq, Eq, PartialOrd, Ord)]
 pub struct Samples(pub calc::Samples);
 
 impl Samples {
@@ -119,29 +118,6 @@ impl Neg for Samples {
     #[inline]
     fn neg(self) -> Samples {
         Samples(-self.samples())
-    }
-}
-
-impl PartialEq for Samples {
-    #[inline]
-    fn eq(&self, other: &Samples) -> bool {
-        self.samples() == other.samples()
-    }
-}
-
-impl Eq for Samples {}
-
-impl PartialOrd for Samples {
-    #[inline]
-    fn partial_cmp(&self, other: &Samples) -> Option<Ordering> {
-        self.samples().partial_cmp(&other.samples())
-    }
-}
-
-impl Ord for Samples {
-    #[inline]
-    fn cmp(&self, other: &Samples) -> Ordering {
-        self.samples().cmp(&other.samples())
     }
 }
 

@@ -1,9 +1,8 @@
-
 pub type Top = u16;
 pub type Bottom = u16;
 
 /// Represents a musical time signature.
-#[derive(Debug, Copy, Clone, RustcEncodable, RustcDecodable, PartialEq, Eq)]
+#[derive(Debug, Copy, Clone, PartialEq, Eq)]
 pub struct TimeSig {
     pub top: Top,
     pub bottom: Bottom,
@@ -16,4 +15,3 @@ impl TimeSig {
         4.0 * self.top as f64 / self.bottom as f64
     }
 }
-

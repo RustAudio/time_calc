@@ -5,7 +5,6 @@
 //!
 //!
 
-use num::Float;
 use super::{
     Measure,
     TimeSig,
@@ -103,4 +102,3 @@ pub fn ticks_from_ms(ms: Ms, bpm: Bpm, ppqn: Ppqn) -> Ticks {
 pub fn ticks_from_samples(samples: Samples, bpm: Bpm, ppqn: Ppqn, sample_hz: SampleHz) -> Ticks {
     ticks_from_ms(ms_from_samples(samples, sample_hz), bpm, ppqn)
 }
-

@@ -25,7 +25,6 @@ const SAMPLE_HZ: SampleHz = 44_100.0;
 const PPQN: Ppqn = 19_200;
 
 fn main() {
-
     println!("time_calc demonstration!");
 
     // Out `Bars` type is a simplified version of a Measure.
@@ -48,12 +47,12 @@ fn main() {
 
     // We also need to know the "time signature" if we are to convert from "Bars".
     // This is because different time signatures can have a different duration in "Beats".
-    let beats_in_a_bar = TimeSig { top: 4, bottom: 4 }.beats_in_a_bar();
-    println!("Duration of a bar in `Beats` with a 4/4 Time Signature: {}", beats_in_a_bar);
-    let beats_in_a_bar = TimeSig { top: 3, bottom: 4 }.beats_in_a_bar();
-    println!("Duration of a bar in `Beats` with a 3/4 Time Signature: {}", beats_in_a_bar);
-    let beats_in_a_bar = TimeSig { top: 7, bottom: 8 }.beats_in_a_bar();
-    println!("Duration of a bar in `Beats` with a 7/8 Time Signature: {}", beats_in_a_bar);
+    let beats_per_bar = TimeSig { top: 4, bottom: 4 }.beats_per_bar();
+    println!("Duration of a bar in `Beats` with a 4/4 Time Signature: {}", beats_per_bar);
+    let beats_per_bar = TimeSig { top: 3, bottom: 4 }.beats_per_bar();
+    println!("Duration of a bar in `Beats` with a 3/4 Time Signature: {}", beats_per_bar);
+    let beats_per_bar = TimeSig { top: 7, bottom: 8 }.beats_per_bar();
+    println!("Duration of a bar in `Beats` with a 7/8 Time Signature: {}", beats_per_bar);
     let time_sig = TimeSig { top: 4, bottom: 4 };
     println!("Duration of a bar at 120bpm, 44_100 sample_hz and 4/4 Time Sig in samples: {}",
              Bars(1).samples(bpm, time_sig, SAMPLE_HZ));
@@ -66,5 +65,4 @@ fn main() {
              Samples(176_400).bars(bpm, time_sig, SAMPLE_HZ));
 
     println!("Great Success!");
-
 }

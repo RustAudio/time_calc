@@ -28,7 +28,7 @@ pub const SECOND_IN_MS: Ms =  1_000.0;
 /// Calculate and return the duration of a bar in milliseconds.
 #[inline]
 pub fn bar_in_ms(bpm: Bpm, ts: TimeSig) -> Ms {
-    beat_in_ms(bpm) * ts.beats_in_a_bar()
+    beat_in_ms(bpm) * ts.beats_per_bar()
 }
 
 /// Calculate and return the duration of a beat in milliseconds.

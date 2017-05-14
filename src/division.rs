@@ -41,7 +41,7 @@ impl Division {
     pub fn beats(&self, ts: TimeSig) -> f64 {
         use num::Float;
         match *self {
-            Division::Bar => ts.beats_in_a_bar(),
+            Division::Bar => ts.beats_per_bar(),
             _ => 2.0.powi(Division::Beat as i32 - *self as i32),
         }
     }
@@ -50,7 +50,7 @@ impl Division {
     pub fn bars(&self, ts: TimeSig) -> f64 {
         match *self {
             Division::Bar => 1.0,
-            _ => self.beats(ts) / ts.beats_in_a_bar(),
+            _ => self.beats(ts) / ts.beats_per_bar(),
         }
     }
 

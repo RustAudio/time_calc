@@ -210,4 +210,3 @@ impl Sub<isize> for DivType {
         self.to_isize().unwrap() - rhs
     }
 }
-

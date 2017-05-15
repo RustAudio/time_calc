@@ -6,7 +6,8 @@
 //!
 
 use num::{FromPrimitive, ToPrimitive};
-use std::ops::{Add, Sub, Mul, Div, Rem, Neg};
+use std::ops::{Add, Sub, Mul, Div, Rem, Neg,
+               AddAssign, SubAssign, MulAssign, DivAssign, RemAssign};
 use super::calc;
 use super::{
     Bars,
@@ -122,6 +123,36 @@ impl Neg for Ms {
     }
 }
 
+impl AddAssign for Ms {
+    fn add_assign(&mut self, rhs: Ms) {
+        *self = *self + rhs;
+    }
+}
+
+impl SubAssign for Ms {
+    fn sub_assign(&mut self, rhs: Ms) {
+        *self = *self - rhs;
+    }
+}
+
+impl MulAssign for Ms {
+    fn mul_assign(&mut self, rhs: Ms) {
+        *self = *self * rhs;
+    }
+}
+
+impl DivAssign for Ms {
+    fn div_assign(&mut self, rhs: Ms) {
+        *self = *self / rhs;
+    }
+}
+
+impl RemAssign for Ms {
+    fn rem_assign(&mut self, rhs: Ms) {
+        *self = *self % rhs;
+    }
+}
+
 impl ToPrimitive for Ms {
     fn to_u64(&self) -> Option<u64> {
         self.ms().to_u64()
@@ -139,4 +170,3 @@ impl FromPrimitive for Ms {
         Some(Ms(n as calc::Ms))
     }
 }
-

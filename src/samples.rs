@@ -6,7 +6,8 @@
 //!
 
 use num::{FromPrimitive, ToPrimitive};
-use std::ops::{Add, Sub, Mul, Div, Rem, Neg};
+use std::ops::{Add, Sub, Mul, Div, Rem, Neg,
+               AddAssign, SubAssign, MulAssign, DivAssign, RemAssign};
 use super::calc;
 use super::{
     Bars,
@@ -121,6 +122,36 @@ impl Neg for Samples {
     }
 }
 
+impl AddAssign for Samples {
+    fn add_assign(&mut self, rhs: Samples) {
+        *self = *self + rhs;
+    }
+}
+
+impl SubAssign for Samples {
+    fn sub_assign(&mut self, rhs: Samples) {
+        *self = *self - rhs;
+    }
+}
+
+impl MulAssign for Samples {
+    fn mul_assign(&mut self, rhs: Samples) {
+        *self = *self * rhs;
+    }
+}
+
+impl DivAssign for Samples {
+    fn div_assign(&mut self, rhs: Samples) {
+        *self = *self / rhs;
+    }
+}
+
+impl RemAssign for Samples {
+    fn rem_assign(&mut self, rhs: Samples) {
+        *self = *self % rhs;
+    }
+}
+
 impl ToPrimitive for Samples {
     fn to_u64(&self) -> Option<u64> {
         self.samples().to_u64()
@@ -138,4 +169,3 @@ impl FromPrimitive for Samples {
         Some(Samples(n as calc::Samples))
     }
 }
-

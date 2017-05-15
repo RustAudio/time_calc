@@ -6,7 +6,8 @@
 //!
 
 use num::{FromPrimitive, ToPrimitive};
-use std::ops::{Add, Sub, Mul, Div, Rem, Neg};
+use std::ops::{Add, Sub, Mul, Div, Rem, Neg,
+               AddAssign, SubAssign, MulAssign, DivAssign, RemAssign};
 use super::calc;
 use super::{
     Bars,
@@ -120,6 +121,36 @@ impl Neg for Ticks {
     }
 }
 
+impl AddAssign for Ticks {
+    fn add_assign(&mut self, rhs: Ticks) {
+        *self = *self + rhs;
+    }
+}
+
+impl SubAssign for Ticks {
+    fn sub_assign(&mut self, rhs: Ticks) {
+        *self = *self - rhs;
+    }
+}
+
+impl MulAssign for Ticks {
+    fn mul_assign(&mut self, rhs: Ticks) {
+        *self = *self * rhs;
+    }
+}
+
+impl DivAssign for Ticks {
+    fn div_assign(&mut self, rhs: Ticks) {
+        *self = *self / rhs;
+    }
+}
+
+impl RemAssign for Ticks {
+    fn rem_assign(&mut self, rhs: Ticks) {
+        *self = *self % rhs;
+    }
+}
+
 impl ToPrimitive for Ticks {
     fn to_u64(&self) -> Option<u64> {
         self.ticks().to_u64()
@@ -137,4 +168,3 @@ impl FromPrimitive for Ticks {
         Some(Ticks(n as calc::Ticks))
     }
 }
-

@@ -6,7 +6,8 @@
 //!
 
 use num::{FromPrimitive, ToPrimitive};
-use std::ops::{Add, Sub, Mul, Div, Rem, Neg};
+use std::ops::{Add, Sub, Mul, Div, Rem, Neg,
+               AddAssign, SubAssign, MulAssign, DivAssign, RemAssign};
 use super::calc;
 use super::{
     Bpm,
@@ -132,6 +133,36 @@ impl Neg for Beats {
     }
 }
 
+impl AddAssign for Beats {
+    fn add_assign(&mut self, rhs: Beats) {
+        *self = *self + rhs;
+    }
+}
+
+impl SubAssign for Beats {
+    fn sub_assign(&mut self, rhs: Beats) {
+        *self = *self - rhs;
+    }
+}
+
+impl MulAssign for Beats {
+    fn mul_assign(&mut self, rhs: Beats) {
+        *self = *self * rhs;
+    }
+}
+
+impl DivAssign for Beats {
+    fn div_assign(&mut self, rhs: Beats) {
+        *self = *self / rhs;
+    }
+}
+
+impl RemAssign for Beats {
+    fn rem_assign(&mut self, rhs: Beats) {
+        *self = *self % rhs;
+    }
+}
+
 impl ToPrimitive for Beats {
     fn to_u64(&self) -> Option<u64> {
         self.beats().to_u64()
@@ -149,4 +180,3 @@ impl FromPrimitive for Beats {
         Some(Beats(n as NumDiv))
     }
 }
-

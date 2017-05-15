@@ -6,7 +6,8 @@
 //!
 
 use num::{FromPrimitive, ToPrimitive};
-use std::ops::{Add, Sub, Mul, Div, Rem, Neg};
+use std::ops::{Add, Sub, Mul, Div, Rem, Neg,
+               AddAssign, SubAssign, MulAssign, DivAssign, RemAssign};
 use super::calc;
 use super::{
     Bpm,
@@ -129,6 +130,36 @@ impl Neg for Bars {
     #[inline]
     fn neg(self) -> Bars {
         Bars(-self.bars())
+    }
+}
+
+impl AddAssign for Bars {
+    fn add_assign(&mut self, rhs: Bars) {
+        *self = *self + rhs;
+    }
+}
+
+impl SubAssign for Bars {
+    fn sub_assign(&mut self, rhs: Bars) {
+        *self = *self - rhs;
+    }
+}
+
+impl MulAssign for Bars {
+    fn mul_assign(&mut self, rhs: Bars) {
+        *self = *self * rhs;
+    }
+}
+
+impl DivAssign for Bars {
+    fn div_assign(&mut self, rhs: Bars) {
+        *self = *self / rhs;
+    }
+}
+
+impl RemAssign for Bars {
+    fn rem_assign(&mut self, rhs: Bars) {
+        *self = *self % rhs;
     }
 }
 

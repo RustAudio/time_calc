@@ -13,6 +13,7 @@ pub type NumDiv = i64;
 
 /// An enum with variants used to represent a musical division.
 #[derive(Debug, Copy, Clone, PartialEq, Eq, Hash)]
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub enum Division {
     Bar,
     Minim,
@@ -149,6 +150,7 @@ impl Sub<isize> for Division {
 /// The 'Division Type'. Used for handling 'Thirds'.
 /// Whole represents a Whole division, while TwoThirds represents two thirds of a division.
 #[derive(Debug, Copy, Clone, PartialEq, Eq, Hash)]
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub enum DivType {
     Whole,
     TwoThirds,

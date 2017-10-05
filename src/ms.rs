@@ -24,6 +24,7 @@ use super::{
 
 /// Time representation in the form of Milliseconds.
 #[derive(Debug, Copy, Clone, PartialEq, PartialOrd)]
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct Ms(pub calc::Ms);
 
 impl Ms {

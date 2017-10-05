@@ -1,5 +1,6 @@
 extern crate num;
 extern crate rand;
+#[cfg(feature = "serde")] #[macro_use] extern crate serde;
 
 pub use bars::Bars;
 pub use beats::Beats;
@@ -43,5 +44,5 @@ pub mod samples;
 pub mod ticks;
 pub mod time_sig;
 
-#[cfg(feature="serde_serialization")]
-mod serde;
+// #[cfg(feature="serde_serialization")]
+// mod serde;

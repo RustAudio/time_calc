@@ -43,6 +43,3 @@ pub mod ms;
 pub mod samples;
 pub mod ticks;
 pub mod time_sig;
-
-// #[cfg(feature="serde_serialization")]
-// mod serde;

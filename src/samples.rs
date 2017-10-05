@@ -24,6 +24,7 @@ use super::{
 
 /// Time representation in the form of Samples.
 #[derive(Debug, Copy, Clone, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct Samples(pub calc::Samples);
 
 impl Samples {

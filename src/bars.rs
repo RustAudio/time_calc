@@ -28,6 +28,7 @@ use super::{
 
 /// Represents a number of bars aka a simplified version of `Measure(1, Bar, Whole)`.
 #[derive(Debug, Copy, Clone, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct Bars(pub NumDiv);
 
 impl Bars {

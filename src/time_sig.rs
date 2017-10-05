@@ -5,6 +5,7 @@ pub type Bottom = u16;
 
 /// Represents a musical time signature.
 #[derive(Debug, Copy, Clone, PartialEq, Eq, Hash)]
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct TimeSig {
     pub top: Top,
     pub bottom: Bottom,

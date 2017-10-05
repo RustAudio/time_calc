@@ -31,6 +31,7 @@ use super::{
 /// Measure(3, Beat, Whole) is three beats of musical time.
 /// Measure(1, Minim, TwoThirds) is two thirds of a minim.
 #[derive(Debug, Copy, Clone, PartialEq, Eq, Hash)]
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct Measure(pub NumDiv, pub Division, pub DivType);
 
 impl Measure {

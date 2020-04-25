@@ -71,84 +71,84 @@ impl Samples {
 
 impl From<calc::Samples> for Samples {
     fn from(samples: calc::Samples) -> Self {
-        Samples(samples)
+        Self(samples)
     }
 }
 
 impl Add for Samples {
-    type Output = Samples;
+    type Output = Self;
     #[inline]
-    fn add(self, rhs: Samples) -> Samples {
-        Samples(self.samples() + rhs.samples())
+    fn add(self, rhs: Self) -> Self {
+        Self(self.samples() + rhs.samples())
     }
 }
 
 impl Sub for Samples {
-    type Output = Samples;
+    type Output = Self;
     #[inline]
-    fn sub(self, rhs: Samples) -> Samples {
-        Samples(self.samples() - rhs.samples())
+    fn sub(self, rhs: Self) -> Self {
+        Self(self.samples() - rhs.samples())
     }
 }
 
 impl Mul for Samples {
-    type Output = Samples;
+    type Output = Self;
     #[inline]
-    fn mul(self, rhs: Samples) -> Samples {
-        Samples(self.samples() * rhs.samples())
+    fn mul(self, rhs: Self) -> Self {
+        Self(self.samples() * rhs.samples())
     }
 }
 
 impl Div for Samples {
-    type Output = Samples;
+    type Output = Self;
     #[inline]
-    fn div(self, rhs: Samples) -> Samples {
-        Samples(self.samples() / rhs.samples())
+    fn div(self, rhs: Self) -> Self {
+        Self(self.samples() / rhs.samples())
     }
 }
 
 impl Rem for Samples {
-    type Output = Samples;
+    type Output = Self;
     #[inline]
-    fn rem(self, rhs: Samples) -> Samples {
-        Samples(self.samples() % rhs.samples())
+    fn rem(self, rhs: Self) -> Self {
+        Self(self.samples() % rhs.samples())
     }
 }
 
 impl Neg for Samples {
-    type Output = Samples;
+    type Output = Self;
     #[inline]
-    fn neg(self) -> Samples {
-        Samples(-self.samples())
+    fn neg(self) -> Self {
+        Self(-self.samples())
     }
 }
 
 impl AddAssign for Samples {
-    fn add_assign(&mut self, rhs: Samples) {
+    fn add_assign(&mut self, rhs: Self) {
         *self = *self + rhs;
     }
 }
 
 impl SubAssign for Samples {
-    fn sub_assign(&mut self, rhs: Samples) {
+    fn sub_assign(&mut self, rhs: Self) {
         *self = *self - rhs;
     }
 }
 
 impl MulAssign for Samples {
-    fn mul_assign(&mut self, rhs: Samples) {
+    fn mul_assign(&mut self, rhs: Self) {
         *self = *self * rhs;
     }
 }
 
 impl DivAssign for Samples {
-    fn div_assign(&mut self, rhs: Samples) {
+    fn div_assign(&mut self, rhs: Self) {
         *self = *self / rhs;
     }
 }
 
 impl RemAssign for Samples {
-    fn rem_assign(&mut self, rhs: Samples) {
+    fn rem_assign(&mut self, rhs: Self) {
         *self = *self % rhs;
     }
 }

@@ -34,7 +34,7 @@ impl Beats {
 
     /// Return the number of beats.
     #[inline]
-    pub fn beats(&self) -> NumDiv { let Beats(num) = *self; num }
+    pub fn beats(&self) -> NumDiv { let Self(num) = *self; num }
 
     /// Convert to the equivalent duration as a number of Bars.
     #[inline]
@@ -82,84 +82,84 @@ impl Beats {
 
 impl From<NumDiv> for Beats {
     fn from(n: NumDiv) -> Self {
-        Beats(n)
+        Self(n)
     }
 }
 
 impl Add for Beats {
-    type Output = Beats;
+    type Output = Self;
     #[inline]
-    fn add(self, rhs: Beats) -> Beats {
-        Beats(self.beats() + rhs.beats())
+    fn add(self, rhs: Self) -> Self {
+        Self(self.beats() + rhs.beats())
     }
 }
 
 impl Sub for Beats {
-    type Output = Beats;
+    type Output = Self;
     #[inline]
-    fn sub(self, rhs: Beats) -> Beats {
-        Beats(self.beats() - rhs.beats())
+    fn sub(self, rhs: Self) -> Self {
+        Self(self.beats() - rhs.beats())
     }
 }
 
 impl Mul for Beats {
-    type Output = Beats;
+    type Output = Self;
     #[inline]
-    fn mul(self, rhs: Beats) -> Beats {
-        Beats(self.beats() * rhs.beats())
+    fn mul(self, rhs: Self) -> Self {
+        Self(self.beats() * rhs.beats())
     }
 }
 
 impl Div for Beats {
-    type Output = Beats;
+    type Output = Self;
     #[inline]
-    fn div(self, rhs: Beats) -> Beats {
-        Beats(self.beats() / rhs.beats())
+    fn div(self, rhs: Self) -> Self {
+        Self(self.beats() / rhs.beats())
     }
 }
 
 impl Rem for Beats {
-    type Output = Beats;
+    type Output = Self;
     #[inline]
-    fn rem(self, rhs: Beats) -> Beats {
-        Beats(self.beats() % rhs.beats())
+    fn rem(self, rhs: Self) -> Self {
+        Self(self.beats() % rhs.beats())
     }
 }
 
 impl Neg for Beats {
-    type Output = Beats;
+    type Output = Self;
     #[inline]
-    fn neg(self) -> Beats {
-        Beats(-self.beats())
+    fn neg(self) -> Self {
+        Self(-self.beats())
     }
 }
 
 impl AddAssign for Beats {
-    fn add_assign(&mut self, rhs: Beats) {
+    fn add_assign(&mut self, rhs: Self) {
         *self = *self + rhs;
     }
 }
 
 impl SubAssign for Beats {
-    fn sub_assign(&mut self, rhs: Beats) {
+    fn sub_assign(&mut self, rhs: Self) {
         *self = *self - rhs;
     }
 }
 
 impl MulAssign for Beats {
-    fn mul_assign(&mut self, rhs: Beats) {
+    fn mul_assign(&mut self, rhs: Self) {
         *self = *self * rhs;
     }
 }
 
 impl DivAssign for Beats {
-    fn div_assign(&mut self, rhs: Beats) {
+    fn div_assign(&mut self, rhs: Self) {
         *self = *self / rhs;
     }
 }
 
 impl RemAssign for Beats {
-    fn rem_assign(&mut self, rhs: Beats) {
+    fn rem_assign(&mut self, rhs: Self) {
         *self = *self % rhs;
     }
 }
@@ -174,10 +174,10 @@ impl ToPrimitive for Beats {
 }
 
 impl FromPrimitive for Beats {
-    fn from_u64(n: u64) -> Option<Beats> {
-        Some(Beats(n as NumDiv))
+    fn from_u64(n: u64) -> Option<Self> {
+        Some(Self(n as NumDiv))
     }
-    fn from_i64(n: i64) -> Option<Beats> {
-        Some(Beats(n as NumDiv))
+    fn from_i64(n: i64) -> Option<Self> {
+        Some(Self(n as NumDiv))
     }
 }

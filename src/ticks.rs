@@ -75,47 +75,47 @@ impl From<calc::Ticks> for Ticks {
 }
 
 impl Add for Ticks {
-    type Output = Ticks;
+    type Output = Self;
     #[inline]
-    fn add(self, rhs: Ticks) -> Ticks {
+    fn add(self, rhs: Self) -> Ticks {
         Ticks(self.ticks() + rhs.ticks())
     }
 }
 
 impl Sub for Ticks {
-    type Output = Ticks;
+    type Output = Self;
     #[inline]
-    fn sub(self, rhs: Ticks) -> Ticks {
+    fn sub(self, rhs: Self) -> Ticks {
         Ticks(self.ticks() - rhs.ticks())
     }
 }
 
 impl Mul for Ticks {
-    type Output = Ticks;
+    type Output = Self;
     #[inline]
-    fn mul(self, rhs: Ticks) -> Ticks {
+    fn mul(self, rhs: Self) -> Ticks {
         Ticks(self.ticks() * rhs.ticks())
     }
 }
 
 impl Div for Ticks {
-    type Output = Ticks;
+    type Output = Self;
     #[inline]
-    fn div(self, rhs: Ticks) -> Ticks {
+    fn div(self, rhs: Self) -> Ticks {
         Ticks(self.ticks() / rhs.ticks())
     }
 }
 
 impl Rem for Ticks {
-    type Output = Ticks;
+    type Output = Self;
     #[inline]
-    fn rem(self, rhs: Ticks) -> Ticks {
+    fn rem(self, rhs: Self) -> Ticks {
         Ticks(self.ticks() % rhs.ticks())
     }
 }
 
 impl Neg for Ticks {
-    type Output = Ticks;
+    type Output = Self;
     #[inline]
     fn neg(self) -> Ticks {
         Ticks(-self.ticks())
@@ -123,31 +123,31 @@ impl Neg for Ticks {
 }
 
 impl AddAssign for Ticks {
-    fn add_assign(&mut self, rhs: Ticks) {
+    fn add_assign(&mut self, rhs: Self) {
         *self = *self + rhs;
     }
 }
 
 impl SubAssign for Ticks {
-    fn sub_assign(&mut self, rhs: Ticks) {
+    fn sub_assign(&mut self, rhs: Self) {
         *self = *self - rhs;
     }
 }
 
 impl MulAssign for Ticks {
-    fn mul_assign(&mut self, rhs: Ticks) {
+    fn mul_assign(&mut self, rhs: Self) {
         *self = *self * rhs;
     }
 }
 
 impl DivAssign for Ticks {
-    fn div_assign(&mut self, rhs: Ticks) {
+    fn div_assign(&mut self, rhs: Self) {
         *self = *self / rhs;
     }
 }
 
 impl RemAssign for Ticks {
-    fn rem_assign(&mut self, rhs: Ticks) {
+    fn rem_assign(&mut self, rhs: Self) {
         *self = *self % rhs;
     }
 }

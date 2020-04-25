@@ -82,84 +82,84 @@ impl Bars {
 
 impl From<NumDiv> for Bars {
     fn from(n: NumDiv) -> Self {
-        Bars(n)
+        Self(n)
     }
 }
 
 impl Add for Bars {
-    type Output = Bars;
+    type Output = Self;
     #[inline]
-    fn add(self, rhs: Bars) -> Bars {
-        Bars(self.bars() + rhs.bars())
+    fn add(self, rhs: Self) -> Self {
+        Self(self.bars() + rhs.bars())
     }
 }
 
 impl Sub for Bars {
-    type Output = Bars;
+    type Output = Self;
     #[inline]
-    fn sub(self, rhs: Bars) -> Bars {
-        Bars(self.bars() - rhs.bars())
+    fn sub(self, rhs: Self) -> Self {
+        Self(self.bars() - rhs.bars())
     }
 }
 
 impl Mul for Bars {
-    type Output = Bars;
+    type Output = Self;
     #[inline]
-    fn mul(self, rhs: Bars) -> Bars {
-        Bars(self.bars() * rhs.bars())
+    fn mul(self, rhs: Self) -> Self {
+        Self(self.bars() * rhs.bars())
     }
 }
 
 impl Div for Bars {
-    type Output = Bars;
+    type Output = Self;
     #[inline]
-    fn div(self, rhs: Bars) -> Bars {
-        Bars(self.bars() / rhs.bars())
+    fn div(self, rhs: Self) -> Self {
+        Self(self.bars() / rhs.bars())
     }
 }
 
 impl Rem for Bars {
-    type Output = Bars;
+    type Output = Self;
     #[inline]
-    fn rem(self, rhs: Bars) -> Bars {
-        Bars(self.bars() % rhs.bars())
+    fn rem(self, rhs: Self) -> Self {
+        Self(self.bars() % rhs.bars())
     }
 }
 
 impl Neg for Bars {
-    type Output = Bars;
+    type Output = Self;
     #[inline]
-    fn neg(self) -> Bars {
-        Bars(-self.bars())
+    fn neg(self) -> Self {
+        Self(-self.bars())
     }
 }
 
 impl AddAssign for Bars {
-    fn add_assign(&mut self, rhs: Bars) {
+    fn add_assign(&mut self, rhs: Self) {
         *self = *self + rhs;
     }
 }
 
 impl SubAssign for Bars {
-    fn sub_assign(&mut self, rhs: Bars) {
+    fn sub_assign(&mut self, rhs: Self) {
         *self = *self - rhs;
     }
 }
 
 impl MulAssign for Bars {
-    fn mul_assign(&mut self, rhs: Bars) {
+    fn mul_assign(&mut self, rhs: Self) {
         *self = *self * rhs;
     }
 }
 
 impl DivAssign for Bars {
-    fn div_assign(&mut self, rhs: Bars) {
+    fn div_assign(&mut self, rhs: Self) {
         *self = *self / rhs;
     }
 }
 
 impl RemAssign for Bars {
-    fn rem_assign(&mut self, rhs: Bars) {
+    fn rem_assign(&mut self, rhs: Self) {
         *self = *self % rhs;
     }
 }
@@ -174,10 +174,10 @@ impl ToPrimitive for Bars {
 }
 
 impl FromPrimitive for Bars {
-    fn from_u64(n: u64) -> Option<Bars> {
-        Some(Bars(n as NumDiv))
+    fn from_u64(n: u64) -> Option<Self> {
+        Some(Self(n as NumDiv))
     }
-    fn from_i64(n: i64) -> Option<Bars> {
-        Some(Bars(n as NumDiv))
+    fn from_i64(n: i64) -> Option<Self> {
+        Some(Self(n as NumDiv))
     }
 }

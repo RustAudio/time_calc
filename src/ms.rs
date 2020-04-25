@@ -77,79 +77,79 @@ impl From<calc::Ms> for Ms {
 }
 
 impl Add for Ms {
-    type Output = Ms;
+    type Output = Self;
     #[inline]
-    fn add(self, rhs: Ms) -> Ms {
-        Ms(self.ms() + rhs.ms())
+    fn add(self, rhs: Self) -> Self {
+        Self(self.ms() + rhs.ms())
     }
 }
 
 impl Sub for Ms {
-    type Output = Ms;
+    type Output = Self;
     #[inline]
-    fn sub(self, rhs: Ms) -> Ms {
-        Ms(self.ms() - rhs.ms())
+    fn sub(self, rhs: Self) -> Self {
+        Self(self.ms() - rhs.ms())
     }
 }
 
 impl Mul for Ms {
-    type Output = Ms;
+    type Output = Self;
     #[inline]
-    fn mul(self, rhs: Ms) -> Ms {
-        Ms(self.ms() * rhs.ms())
+    fn mul(self, rhs: Self) -> Self {
+        Self(self.ms() * rhs.ms())
     }
 }
 
 impl Div for Ms {
-    type Output = Ms;
+    type Output = Self;
     #[inline]
-    fn div(self, rhs: Ms) -> Ms {
-        Ms(self.ms() / rhs.ms())
+    fn div(self, rhs: Self) -> Self {
+        Self(self.ms() / rhs.ms())
     }
 }
 
 impl Rem for Ms {
-    type Output = Ms;
+    type Output = Self;
     #[inline]
-    fn rem(self, rhs: Ms) -> Ms {
-        Ms(self.ms() % rhs.ms())
+    fn rem(self, rhs: Self) -> Self {
+        Self(self.ms() % rhs.ms())
     }
 }
 
 impl Neg for Ms {
-    type Output = Ms;
+    type Output = Self;
     #[inline]
-    fn neg(self) -> Ms {
-        Ms(-self.ms())
+    fn neg(self) -> Self {
+        Self(-self.ms())
     }
 }
 
 impl AddAssign for Ms {
-    fn add_assign(&mut self, rhs: Ms) {
+    fn add_assign(&mut self, rhs: Self) {
         *self = *self + rhs;
     }
 }
 
 impl SubAssign for Ms {
-    fn sub_assign(&mut self, rhs: Ms) {
+    fn sub_assign(&mut self, rhs: Self) {
         *self = *self - rhs;
     }
 }
 
 impl MulAssign for Ms {
-    fn mul_assign(&mut self, rhs: Ms) {
+    fn mul_assign(&mut self, rhs: Self) {
         *self = *self * rhs;
     }
 }
 
 impl DivAssign for Ms {
-    fn div_assign(&mut self, rhs: Ms) {
+    fn div_assign(&mut self, rhs: Self) {
         *self = *self / rhs;
     }
 }
 
 impl RemAssign for Ms {
-    fn rem_assign(&mut self, rhs: Ms) {
+    fn rem_assign(&mut self, rhs: Self) {
         *self = *self % rhs;
     }
 }

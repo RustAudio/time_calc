@@ -1,4 +1,4 @@
-use {Bars, Ppqn, Ticks};
+use crate::{Bars, Ppqn, Ticks};
 
 pub type Top = u16;
 pub type Bottom = u16;

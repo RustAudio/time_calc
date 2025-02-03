@@ -171,10 +171,13 @@ impl NumCast for DivType {
     }
 }
 
-impl ::rand::Rand for DivType {
-    fn rand<R: ::rand::Rng>(rng: &mut R) -> DivType {
-        let rand: bool = rng.gen();
-        if rand { DivType::Whole } else { DivType::TwoThirds }
+impl rand::distr::Distribution<DivType> for rand::distr::StandardUniform {
+    fn sample<R: rand::Rng + ?Sized>(&self, rng: &mut R) -> DivType {
+        if rng.random::<bool>() {
+            DivType::Whole
+        } else {
+            DivType::TwoThirds
+        }
     }
 }
 

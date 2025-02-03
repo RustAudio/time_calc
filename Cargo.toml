@@ -1,7 +1,8 @@
 [package]
 name = "time_calc"
 description = "A library for music/DSP time conversions! Provides functions and methods for converting between ticks, ms, samples, bars, beats and measures."
-version = "0.13.0"
+version = "0.14.0"
+edition = "2021"
 authors = ["mitchell.nordine@gmail.com"]
 readme = "README.md"
 keywords = ["time", "dsp", "audio", "music", "conversion"]
@@ -10,6 +11,6 @@ repository = "https://github.com/RustAudio/time_calc.git"
 homepage = "https://github.com/RustAudio/time_calc"
 
 [dependencies]
-num = "0.1.28"
-rand = "0.3.12"
+num = "0.4.3"
+rand = { version = "0.9.0", default-features = false }
 serde = { optional = true, version = "1.0", features = ["serde_derive"] }
